@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObeliskData", "ObeliskData\ObeliskData.csproj", "{B9B90EB9-8178-4264-AE3E-C099937E700D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio", "Portfolio\Portfolio.csproj", "{C1FB32F0-63F9-4542-AB20-DA084933C70D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9B90EB9-8178-4264-AE3E-C099937E700D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9B90EB9-8178-4264-AE3E-C099937E700D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9B90EB9-8178-4264-AE3E-C099937E700D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9B90EB9-8178-4264-AE3E-C099937E700D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1FB32F0-63F9-4542-AB20-DA084933C70D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1FB32F0-63F9-4542-AB20-DA084933C70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1FB32F0-63F9-4542-AB20-DA084933C70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1FB32F0-63F9-4542-AB20-DA084933C70D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {708BAE9C-44BB-4F26-A193-BE5E20495818}
+	EndGlobalSection
+EndGlobal
