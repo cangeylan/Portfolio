@@ -17,7 +17,8 @@ namespace ObeliskData.Repositories
             : base(options)
         {
         }
-
+        public virtual DbSet<Size> Sizes { get; set; }
+        public virtual DbSet<ProductSize> ProductSizes { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<BuildVersion> BuildVersions { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
@@ -46,6 +47,26 @@ namespace ObeliskData.Repositories
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
+            modelBuilder.Entity<Size>().ToTable("Size","SalesLT");
+            modelBuilder.Entity<Size>().Property(s => s.SizeCode).HasMaxLength(3);
+            modelBuilder.Entity<Size>().Property(s => s.Name);
+            modelBuilder.Entity<Size>().Property(s => s.SizeID).IsRequired();
+
+            modelBuilder.Entity<ProductSize>().ToTable("ProductSize","SalesLT");
+            modelBuilder.Entity<Product>().Property(lt => lt.ProductId).IsRequired();
+            modelBuilder.Entity<Size>().Property(lt => lt.SizeID).IsRequired();
+            //indexes
+            modelBuilder.Entity<ProductSize>().HasKey(lt => new { lt.ProductId,lt.SizeId });
+            modelBuilder.Entity<ProductSize>()
+                .HasOne(lt => lt.Product)
+                .WithMany(a => a.ProductSizes)
+                .HasForeignKey(l => l.ProductId);
+
+            modelBuilder.Entity<ProductSize>()
+                .HasOne(lt => lt.Size)
+                .WithMany(a => a.ProductSizes)
+                .HasForeignKey(l => l.SizeId);
 
             modelBuilder.Entity<Address>(entity =>
             {
@@ -649,6 +670,8 @@ namespace ObeliskData.Repositories
 
                 entity.Property(e => e.Wheel).HasMaxLength(256);
             });
+            
+
 
             modelBuilder.HasSequence<int>("SalesOrderNumber", "SalesLT");
 

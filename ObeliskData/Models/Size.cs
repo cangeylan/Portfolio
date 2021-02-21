@@ -8,6 +8,7 @@ namespace ObeliskData.Models
     {
         public int SizeID { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public string SizeCode { get; set; }
+        public virtual ICollection<ProductSize> ProductSizes { get; set; }
     }
 }
