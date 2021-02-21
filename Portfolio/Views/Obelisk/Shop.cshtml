@@ -3,7 +3,6 @@
     ViewData["Title"] = "Shop";
     Layout = "~/Views/Shared/_ObeliskLayout.cshtml";
 }
-
 <div class="album my-5 py-5 px-1 bg-light">
     <div class="container-fluid">
         <div class="row px-4 d-flex justify-content-around" id='producten'>
@@ -16,30 +15,38 @@
                         {
                             <img id="@item.ProductId" class='card-img-top productImg' src="~/img/obelisk/products/@item.ProductColors.First().Image " onclick="detail('${product_id}')" style=''>
                         }
-                      
+
                         <div class="card-body text-center pb-0">
                             <p class="card-title mb-0"><strong> @item.Name</strong></p>
                             <p class="card-text mb-0">@item.ListPrice</p>
                             <div class="input-group m-2">
-                                <select class="browser-default custom-select" id='@item.ProductId' aria-label="Example select with button addon">
+                                <select id="Size_@item.ProductId.ToString()" class="browser-default custom-select"  aria-label="Example select with button addon">
                                     <option value=0 selected>Kies maat</option>
-                                    @foreach (var size in item.ProductSizes)
+                                    @foreach (var productSize in item.ProductSizes)
                                     {
-                                        <option value="@size.SizeId">@size.Size.Name</option>
+                                        <option data-name="@productSize.Size.Name"
+                                                data-id="@productSize.SizeId">
+                                            @productSize.Size.Name
+                                        </option>
                                     }
                                 </select>
                             </div>
                             <div class="form-check mb-3 pt-1">
-                                @{  string state="checked";
+                                @{ string state="checked";
                                     foreach (var productColor in item.ProductColors)
                                     {
-                                    <div class="form-check form-check-inline" style='font-size: 14px;'>
-                                        <input onclick='verander_beeld_en_parameters("${product_naam}","${product_id}","${product_prijs}","${kleur_beelden_directory}")' class="form-check-input" type="radio" @state name="@productColor.ProductID" value="@productColor.Color.Name">
-                                        <label class="form-check-label" for="inlineRadio1">@productColor.Color.Name</label>
-                                    </div>
-                                        state = ""; 
+                                        <div class="form-check form-check-inline" style='font-size: 14px;'>
+                                            <input class="form-check-input" type="radio" 
+                                                   @state 
+                                                   name="Color @productColor.ProductID" 
+                                                   data-name="@productColor.Color.Name" 
+                                                   data-image="@productColor.Image"
+                                                   data-id="@productColor.Color.ColorID.ToString()">
+                                            <label class="form-check-label" for="inlineRadio1">@productColor.Color.Name</label>
+                                        </div>
+                                        state = "";
                                     }
-                                 }
+                                }
                             </div>
 
                             <div class="row d-flex justify-content-center mb-3">
@@ -50,17 +57,23 @@
                                         <path fill-rule="evenodd" d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5z" />
                                     </svg>
                                 </a>
-                                <a class="btn btn-outline m-1" onclick='product_toevoegen("${product_naam}","${product_id}","${product_prijs}","${beeldURL}")'>
+                                <button class="btn btn-outline m-1 addToBasketSign" 
+                                        data-product_id="@item.ProductId.ToString()" 
+                                        data-product_name="@item.Name" 
+                                        data-price="@item.ListPrice.ToString()" 
+                                        >
                                     <svg width="1.4em" height="1.4em" viewBox="0 0 16 16" class="bi bi-bag-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z" />
                                         <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" />
                                     </svg>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                    }
-                </div>
-            </div>
+            }
+        </div>
+    </div>
+
 </div>
+<script src="~/js/shop.js" defer></script>

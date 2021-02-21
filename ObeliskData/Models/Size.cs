@@ -10,5 +10,7 @@ namespace ObeliskData.Models
         public string Name { get; set; }
         public string SizeCode { get; set; }
         public virtual ICollection<ProductSize> ProductSizes { get; set; }
+        public virtual ICollection<SalesOrderDetail> SalesOrderDetails { get; set; }
+
     }
 }

@@ -9,6 +9,7 @@ namespace ObeliskData.Models
         public int ColorID { get; set; }
         public string Name { get; set; }
         public virtual ICollection<ProductColor> ProductColors { get; set; }
+        public virtual ICollection<SalesOrderDetail> SalesOrderDetails { get; set; }
 
     }
 }
