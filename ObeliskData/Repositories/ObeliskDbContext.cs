@@ -19,6 +19,8 @@ namespace ObeliskData.Repositories
         }
         public virtual DbSet<Size> Sizes { get; set; }
         public virtual DbSet<ProductSize> ProductSizes { get; set; }
+        public virtual DbSet<Color> Colors { get; set; }
+        public virtual DbSet<ProductColor>ProductColors { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<BuildVersion> BuildVersions { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
@@ -47,6 +49,26 @@ namespace ObeliskData.Repositories
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
+            modelBuilder.Entity<Color>().ToTable("Color","SalesLT");
+            modelBuilder.Entity<Color>().Property(s => s.Name).IsRequired().HasColumnName("ColorName");
+            modelBuilder.Entity<Color>().Property(s => s.ColorID).IsRequired();
+
+            modelBuilder.Entity<ProductColor>().ToTable("ProductColor","SalesLT");
+            modelBuilder.Entity<ProductColor>().Property(pc => pc.Image).HasMaxLength(200);
+            //indexes
+            modelBuilder.Entity<ProductColor>().HasKey(lt => new { lt.ColorID,lt.ProductID });
+            modelBuilder.Entity<ProductColor>()
+                .HasOne(lt => lt.Product)
+                .WithMany(a => a.ProductColors)
+                .HasForeignKey(l => l.ProductID);
+
+            modelBuilder.Entity<ProductColor>()
+                .HasOne(lt => lt.Color)
+                .WithMany(a => a.ProductColors)
+                .HasForeignKey(l => l.ColorID);
+
+
 
             modelBuilder.Entity<Size>().ToTable("Size","SalesLT");
             modelBuilder.Entity<Size>().Property(s => s.SizeCode).HasMaxLength(3);

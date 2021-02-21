@@ -11,7 +11,12 @@
             {
                 <div class="col-md-3">
                     <div class="card mb-3 shadow-sm">
-                        <img id="@item.ProductId" class='card-img-top' src="~/img/obelisk/products/@item.ProductId" onclick="detail('${product_id}')" style='cursor:pointer; height:395px; object-fit: cover;'>
+
+                        @if (item.ProductColors.Count != 0)
+                        {
+                            <img id="@item.ProductId" class='card-img-top productImg' src="~/img/obelisk/products/@item.ProductColors.First().Image " onclick="detail('${product_id}')" style=''>
+                        }
+                      
                         <div class="card-body text-center pb-0">
                             <p class="card-title mb-0"><strong> @item.Name</strong></p>
                             <p class="card-text mb-0">@item.ListPrice</p>
@@ -24,6 +29,19 @@
                                     }
                                 </select>
                             </div>
+                            <div class="form-check mb-3 pt-1">
+                                @{  string state="checked";
+                                    foreach (var productColor in item.ProductColors)
+                                    {
+                                    <div class="form-check form-check-inline" style='font-size: 14px;'>
+                                        <input onclick='verander_beeld_en_parameters("${product_naam}","${product_id}","${product_prijs}","${kleur_beelden_directory}")' class="form-check-input" type="radio" @state name="@productColor.ProductID" value="@productColor.Color.Name">
+                                        <label class="form-check-label" for="inlineRadio1">@productColor.Color.Name</label>
+                                    </div>
+                                        state = ""; 
+                                    }
+                                 }
+                            </div>
+
                             <div class="row d-flex justify-content-center mb-3">
                                 <a class="btn btn-outline m-1" onclick='detail("${product_id}")' href='javascript:;'>
                                     <svg width="1.4em" height="1.4em" viewBox="0 0 16 16" class="bi bi-zoom-in" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

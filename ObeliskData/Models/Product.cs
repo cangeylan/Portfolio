@@ -33,6 +33,7 @@ namespace ObeliskData.Models
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual ProductModel ProductModel { get; set; }
         public virtual ICollection<ProductSize> ProductSizes { get; set; }
+        public virtual ICollection<ProductColor> ProductColors { get; set; } 
         public virtual ICollection<SalesOrderDetail> SalesOrderDetails { get; set; }
     }
 }

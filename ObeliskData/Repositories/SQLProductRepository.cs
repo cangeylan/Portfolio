@@ -11,7 +11,7 @@ namespace ObeliskData.Repositories
     {
         private readonly ObeliskDbContext context;
         public SQLProductRepository(ObeliskDbContext context) => this.context = context;
-        public IEnumerable<Product> GetAllProducts(int skip,int take) => context.Products.Include(p=>p.ProductSizes).ThenInclude(p=>p.Size).Skip(skip).Take(take);
+        public IEnumerable<Product> GetAllProducts(int skip,int take) => context.Products.Include(p=>p.ProductSizes).ThenInclude(p=>p.Size).Include(p=>p.ProductColors).ThenInclude(pc=>pc.Color).Skip(skip).Take(take);
         public IEnumerable<ProductCategory> GetCategoriesWithBanners() => context.ProductCategories.Where(x => x.BannerImg != null);
     }
 }
