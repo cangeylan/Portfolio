@@ -52,7 +52,7 @@ function AddToSession(product) {
     let newItem = true;
     if (basket.length != 0) {
         basket.forEach(e => {
-            if (e.ProductId == product.ProductId) {
+            if (e.ProductId == product.ProductId && e.Color.Id == product.Color.Id && e.Size.Id == product.Size.Id) {
                 e.Amount += product.Amount;
                 e.TotalPrice = e.Amount * e.Price;
                 newItem = false;

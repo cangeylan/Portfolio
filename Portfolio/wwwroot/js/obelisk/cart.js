@@ -8,7 +8,7 @@ let totalAmountBox = document.getElementById('total_amount');
 shoppingCart.onclick = ShowBasket;
 
 function ShowBasket() {
-    var basket = GetBasket();
+    const basket = GetBasket();
     basket.length == 0 ? EmptyBasketUI() : FillBasketUI(basket);
 }
 
@@ -16,6 +16,7 @@ function FillBasketUI(basket) {
     shoppingCart.innerHTML = '';
 
     basket.forEach(e => {
+
         shoppingCart.innerHTML +=
             `<div class="dropdown-item d-flex px-0">
                     <div class="col-3 product_winkel_image" >
@@ -31,9 +32,9 @@ function FillBasketUI(basket) {
                     </div>
                     <div class="col-4 antaal">
                     <div class="row">
-                        <p class="product_antaal_knop" >-</p>
+                        <p class="changeAmount product_antaal_knop"  data-operator="-" data-id='${e.ProductId}' data-color='${e.Color.Id}' data-size="${e.Size.Id}">-</p>
                         <p class='product_antaal' type="text">${e.Amount}</p>
-                        <p class="product_antaal_knop" >+</p>
+                        <p class="changeAmount product_antaal_knop" data-operator="+" data-id='${e.ProductId}' data-color='${e.Color.Id}' data-size="${e.Size.Id}" data-backdrop="static" data-keyboard="false">+</p>
                     </div>
                     </div>
                 </div> 
@@ -46,6 +47,10 @@ function FillBasketUI(basket) {
     cartIcon.classList.remove("bi-cart");
     cartIcon.classList.add("bi-cart-check-fill")
     cartIcon.innerHTML = `<path fill-rule="evenodd" d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm.354-7.646a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>`
+
+    for (const button of document.querySelectorAll(".changeAmount")) {
+        button.onclick = ChangeAmount;
+    }    
 }
 
 function EmptyBasketUI() {
@@ -69,5 +74,50 @@ function GetBasket() {
 function TotalPrice(basket) {
     return basket.reduce((sum, element) => (Number(sum) + Number(element.TotalPrice)).toFixed(2), 0);
 };
+
+
+
+function ChangeAmount() {
+    let basket = GetBasket();
+    let dataId = Number(this.dataset.id);
+    let colorId = this.dataset.color;
+    let sizeId = this.dataset.size;
+    let operator = this.dataset.operator;
+
+    basket.forEach(e => {
+        if (e.ProductId == dataId && e.Color.Id == colorId && e.Size.Id == sizeId) {
+            if (operator == "-") {
+                e.Amount--;
+                console.log(e);
+                if (e.Amount == 0)
+                    basket = basket.filter(obj=>obj.Amount!=0);
+            }
+            if (operator == "+")
+                e.Amount++;            
+            e.TotalPrice = e.Amount * e.Price;
+        }
+    })
+    sessionStorage.setItem("basket", JSON.stringify(basket));
+    ShowBasket();
+}
+
+//Prevent dropdown from closing when clicked inside the dropdown
+$('.dropdown-menu.winkelwagantje, #aanmelden_dropdown').on('click', function (event) {
+    var events = $._data(document, 'events') || {};
+    events = events.click || [];
+    for (var i = 0; i < events.length; i++) {
+        if (events[i].selector) {
+
+            if ($(event.target).is(events[i].selector)) {
+                events[i].handler.call(event.target, event);
+            }
+
+            $(event.target).parents(events[i].selector).each(function () {
+                events[i].handler.call(this, event);
+            });
+        }
+    }
+    event.stopPropagation();
+});
 
 ShowBasket();
