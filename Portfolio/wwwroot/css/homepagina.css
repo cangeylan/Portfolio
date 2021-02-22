@@ -9,6 +9,11 @@
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
   font-size: 2.25rem;
 }
+.btn.focus, .btn:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
 
 .blog-header-logo:hover {
   text-decoration: none;

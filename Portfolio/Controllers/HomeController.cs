@@ -22,6 +22,15 @@ namespace Portfolio.Controllers
         {
             return View();
         }
+        public IActionResult Galgje()
+        {
+            return View();
+        }
+
+        public IActionResult Penthouse()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {

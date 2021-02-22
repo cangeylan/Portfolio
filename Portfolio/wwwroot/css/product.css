@@ -5,6 +5,11 @@
 /*
  * Custom translucent site header
  */
+.btn.focus, .btn:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
 .productImg {
     cursor: pointer;
     height: 395px;

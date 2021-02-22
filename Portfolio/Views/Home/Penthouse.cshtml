@@ -1,0 +1,108 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js"></script>
+    <script src="~/js/penthouse/animations.js"></script>
+    <script src="~/js/penthouse/pent3Data.js"></script>
+    <script src="~/js/penthouse/pent3.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/css/pent3.css">
+    <title>Build A Penthouse</title>
+</head>
+<body id="body" onload="nextStep()">
+    <a class="home" asp-controller="Home" asp-action="Index">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Product</title><circle cx="12" cy="12" r="10" /><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" /></svg>
+    </a>
+    <ul id="steps"></ul>
+    <button id="sidebar" onclick="sidebar()"></button>
+    <div id="slideContainer">
+        <div id="welcomeTo">
+            <p id="welcome" class="welcome">Let's build your<br> dream penthouse</p>
+            <button id="startButton" class="startButton" onclick="nextStep()">start</button>
+        </div>
+        <div class="firstImg" id="firstImage">
+            <img class="firstImg" id='backgroundImg' src="https://www.imagicasa.be/storage/stories/October2019/810306-51804-Luxe-penthouse-met-uniek-zicht-op-Antwerpen-50.jpg">
+            <div class="firstImg" id="half"></div>
+        </div>
+
+        <div id="planImg">
+            <img id="smallPlan" src="https://i.ibb.co/KK00Bc2/download-9.png">
+            <img id="bigPlan" src="https://i.ibb.co/Gn4SHCK/download-17.png">
+            <img id='configuredImg' src=''>
+        </div>
+
+        <div class="containers" id="squareMeterCont">
+            <div id="squareMeter">
+                <p id="question1" class="question">What's your desired <br>square meter?</p>
+                <div id="range-wrap">
+                    <input class="range" id="slider" type="range" min="70" max="250" step="10" value="160">
+                    <div class="space"></div>
+                    <output id="userSquareMeter" class="bubble"></output>
+                </div>
+                <button id="nextStepButton" onclick="nextStep()">next</button>
+            </div>
+        </div>
+
+        <div class="containers" id='bedroomContainer'>
+            <div id="bedroom">
+                <p>How many bedrooms?</p>
+                <div id="bedroomIcons"></div>
+            </div>
+        </div>
+
+        <div class="containers" id="extraUtilities">
+            <div id="utilityText">Would you<br>like to add these?</div>
+            <div id="pool" onclick="utilityPick('Pool')" onmouseover="utilityHover('Pool')" onmouseout="utilityHover('Terrace')">
+                <img src="https://i.ibb.co/mC1qxM5/swimming-icon-png-3749.png" alt="">
+                <p id="poolTxt">
+                    pool
+                </p>
+            </div>
+            <div id="hottub" onclick="utilityPick('Hot Tub')" onmouseover="utilityHover('Hot Tub')" onmouseout="utilityHover('Terrace')">
+                <img src="https://i.ibb.co/my80tK5/thin-1509-spa-wellness-pool-jacuzzi-hot-tub-512.png" alt="">
+                <p id="hottubTxt">
+                    hot tub
+                </p>
+            </div>
+            <button onclick="utilityPick('Terrace')" id="skip">
+                skip
+            </button>
+        </div>
+
+        <div class="containers" id="kitchen_Container">
+            <p class="ktchn">Choose your kitchen</p>
+            <a class="kitchen ktchn" id="kitchen1" onclick="kitchenPick('Regular')">Regular</a>
+            <a class="kitchen ktchn" id="kitchen2" onclick="kitchenPick('Special')">Special</a>
+            <a class="kitchen ktchn" id="kitchen3" onclick="kitchenPick('Elegant')">Elegant</a>
+            <div class="kitchenImg " id='kitchenImg1'></div>
+            <button class="kitchenNext " id="nextStepButton" onclick="nextStep()">next</button>
+        </div>
+
+
+        <div class="containers" id='bathroomContainer'>
+            <p>Choose your bathroom</p>
+            <a class='bathroom' id='bathroom1' onclick="bathroomPick('Classic')">Classic</a>
+            <a class='bathroom' id='bathroom2' onclick="bathroomPick('Modern')">Modern</a>
+            <a class='bathroom' id='bathroom3' onclick="bathroomPick('Deluxe')">Deluxe</a>
+            <div class="bathroomImg" id='bathroomImg'></div>
+            <button class="bathroomNext" id="nextStepButton" onclick="nextStep()">next</button>
+        </div>
+
+        <div class="containers" id='result'>
+            <p class="resultSlogan">This Is Your Dream Penthouse</p>
+            <div id="resultImg"></div>
+            <div id="resultText"></div>
+
+        </div>
+    </div>
+
+
+</body>
+</html>

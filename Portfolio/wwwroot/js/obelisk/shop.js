@@ -24,11 +24,16 @@ function addToBasket() {
         Id: gekozenSizeOption.dataset.id,
         Name: gekozenSizeOption.dataset.name
     }
+
+    let price = parseFloat(this.dataset.price.replace(',', '.').replace(' ', '')).toFixed(2);
     const productDetail = {
-        ProductId :this.dataset.product_id,
-        Name : this.dataset.product_name,
-        Color: GekozenColor,
-        Size: gekozenSize
+        "ProductId": this.dataset.product_id,
+        "Price": price,
+        "Name" : this.dataset.product_name,
+        "Color": GekozenColor,
+        "Size": gekozenSize,
+        "Amount": 1,
+        "TotalPrice": price
     }
     gekozenSize.Id == undefined ? ErrorInAddingBasket(this.dataset.product_id) : AddToSession(productDetail);
 }
@@ -41,6 +46,33 @@ function ErrorInAddingBasket(id) {
     }, 200);
 }
 
-function AddToSession(products) {
-    console.log(products);
+function AddToSession(product) {
+
+    let basket = GetBasket();
+    let newItem = true;
+    if (basket.length != 0) {
+        basket.forEach(e => {
+            if (e.ProductId == product.ProductId) {
+                e.Amount += product.Amount;
+                e.TotalPrice = e.Amount * e.Price;
+                newItem = false;
+            }
+        })
+    }
+    if (newItem)
+        basket.push(product);
+    sessionStorage.setItem("basket", JSON.stringify(basket));
+
+    SuccesfulPushSign(product.ProductId);
+    ShowBasket();
+}
+
+function SuccesfulPushSign(pId) {
+
+    document.querySelector(`.cartIcon`).style.color = 'white'
+    document.querySelector(`[data-product_id="${pId}"]`).style.color = 'red';
+    setTimeout(() => {
+        document.querySelector(`.cartIcon`).style.color = '';
+        document.querySelector(`[data-product_id="${pId}"]`).style.color = '';
+    }, 200);
 }

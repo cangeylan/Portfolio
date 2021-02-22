@@ -1,0 +1,811 @@
+
+
+body{
+  overflow: hidden;
+  font-family: 'Nanum Gothic', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+#slideContainer{
+  position: absolute;
+  width: 100vw;
+}
+.home {
+    position: absolute;
+    margin: 10px;
+    z-index: 3;
+    color: black;
+}
+
+.containers{
+  height: 100vh;
+  width: 55vw;
+  position: absolute;
+}
+
+#firstImage{
+  transform: translateY(-20vh);
+}
+#planImg,#squareMeterCont{
+  transform: translateY(0vh);
+}
+
+#bedroomContainer{
+  transform: translateY(100vh);
+}
+
+#extraUtilities{
+  display: flex;
+  justify-content: center;
+  background-color: #5fcdd1;
+  height: 100vh;
+  z-index: -1;
+  transform: translateY(200vh);
+}
+
+#kitchen_Container{
+  transform: translateY(300vh);
+  background-color: #2ca587;
+}
+
+#bathroomContainer{
+  transform: translateY(400vh);
+  background-color: #a53a2c;
+}
+
+#result {
+  transform: translateY(515vh);
+  width: 100vw;
+}
+
+/* Progress Bar */
+#steps{
+  direction: rtl;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+  height: 100vh;
+  right: 0;
+  text-align: right;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.stepNames{
+  opacity: 0;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 120px;
+  z-index: 5;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Nanum Gothic', sans-serif;
+  border: transparent;
+  background: transparent;
+  color: #333333;
+  outline: transparent;
+  cursor: pointer;
+}
+
+.stepNames>p{
+  color: #333333;
+  font-size: 12px;
+  position: absolute;
+  right: 6px;
+  margin-block-start: 5px;
+}
+.stepNames:focus{
+  outline: transparent;
+}
+.stepNames:disabled{
+  cursor: unset;
+}
+
+
+/* Welcome */
+#welcomeTo{
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  transform: translateY(0);
+}
+
+#welcome{
+  position: absolute;
+  top: 10%;
+  bottom: 47.07%;
+  z-index: 1;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 6vw;
+  letter-spacing: -3px;
+  line-height: 108.2%;  
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: lightslategrey;
+  mix-blend-mode: multiply;
+}
+
+
+#startButton{
+  position: absolute;
+  align-self: center;
+  z-index: 1;
+  border: solid;
+  box-shadow: transparent;
+  border-radius: 55px;
+  width: 250px;
+  height: 82px;
+  font-size: 28px;
+  background-color: transparent;
+  color: lightslategrey;
+  mix-blend-mode: multiply;
+  line-height: 1.2;
+  padding-bottom: 4px;
+  top: 55%;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+#startButton:hover{
+  background-color: rgba(255, 255, 255, 0.295);
+}
+#startButton:focus {
+  outline: none;
+}
+
+/* Square Meter + Bedroom */
+.firstImg{
+  position: absolute;
+  object-fit: cover;
+  height: 120vh;
+  width: 55vw;
+  padding: 0;
+  margin: 0;
+  opacity: 100%;
+}
+#backgroundImg{
+  opacity: 0.6;
+}
+#half{
+  background-color: black;
+  z-index: -1;
+}
+
+#planImg{
+  position: absolute;
+  justify-content: left;
+  width: 45%;
+  margin-top: 18vh;
+  right: 0%;
+ }
+
+
+#planImg>img{
+  position: absolute;
+  z-index: -1;
+  width: 50vw;
+  top: -1vh;
+  margin-left: 3vw;
+  transition: opacity 1s ease, visibility 0s ease;
+}
+
+#planImg img.transparent{
+  opacity: 1;
+}
+
+#configuredImg{
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+
+#squareMeterCont {  
+  flex-direction: column;
+  height: 100vh;
+  margin-top: 15vh;
+  position: absolute;
+  left: 0%;
+  flex-direction: row;
+  text-align: center;
+}
+
+#squareMeter{
+  width: 100%;
+}
+
+#question1{
+  width: 100%;
+  height: 26%;
+  justify-content: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8vh;
+  line-height: 1em;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  letter-spacing: 0.025em;
+  color: #FFFFFF;
+}
+
+#slider{
+    width: 24vw;
+}
+#userSquareMeter {
+  background: rgba(255, 251, 251, 0);
+  color: white;
+  font-size: 89px;
+  margin-right: 52px;
+  margin-top: 10px;
+}
+
+#userSquareMeter::after {
+  content: "㎡";
+  position: absolute;
+  z-index: -1;
+  width: 2px;
+  height: 2px;
+  transition: content 0.2 ease-in;
+  }
+
+  .space{
+      width: 40px;
+  }
+
+#range-wrap {
+  height: 8vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 3rem;
+  justify-content: space-around;
+}
+.range {
+  width: 100%;
+}
+
+#nextStepButton{
+  background-color: white;
+  border: solid;    
+  box-shadow: transparent;
+  border-radius: 55px;
+  width: 171px;
+  height: 63px;
+  font-size: 22px;
+  background-color: transparent;
+  color: white;
+  line-height: 1.2;
+  cursor: pointer;
+  padding-bottom: 4px;
+  letter-spacing: 2px;
+  outline: none; 
+  margin-top: 40px;
+}
+  
+  #nextStepButton:hover{
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.295);
+  }
+  #nextStepButton:focus {
+    outline: none;
+    opacity: 0%;
+    transition: opacity 0.5s;
+  }
+  
+  /* Bedroom */
+#bedroomContainer{
+  left: 0%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: absolute;
+  opacity: 1;
+  flex-direction: row;
+  background-color: #d4af37;
+
+}
+
+  #bedroom{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    top: 19vh;
+    width: 100%;
+    opacity: 1;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 6vh;
+    line-height: 108.2%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    letter-spacing: 0.025em;
+    color: #FFFFFF;
+  }
+
+  #bedroom>p{
+    line-height: 1em;
+    font-size: 8vh;
+  }
+  #bedroomIcons{
+    display: flex;
+    justify-content: center;
+    height: 25%;
+    z-index: 5;
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.7s ease;
+    margin-top: 5vh;
+  }
+  
+  #bedroomIcons>img{
+    height: 70%;
+    padding-right: 10px;
+    padding-left: 10px;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+
+
+/* Utilities */
+
+#price{
+  transition: opacity 1s ease;
+}
+
+#utilityText{
+  color: white;
+  top: 16%;
+  font-size: 8vh;
+  width: 100%;
+  position: absolute;
+  /* left: 0%; */
+  text-align: center;
+}
+#pool{
+  opacity: 1;
+  position: absolute;
+  display: flex;
+  overflow: hidden;
+  right: 7%;
+}
+
+
+#hottub{
+  opacity: 1;
+  position: absolute;
+  display: flex;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+  left: 7%;
+}
+
+#hottub:hover{
+  opacity: 1;
+}
+#pool:hover{
+  opacity: 1;
+}
+
+#skip{
+  position: absolute;
+  bottom: 11%;
+  background-color: white;
+  border: solid;
+  box-shadow: transparent;
+  border-radius: 55px;
+  width: 171px;
+  height: 63px;
+  font-size: 22px;
+  background-color: transparent;
+  color: white;
+  line-height: 1.2;
+  cursor: pointer;
+  padding-bottom: 4px;
+  letter-spacing: 2px;
+  outline: none;
+  margin-top: 40px;
+  z-index: 3;
+}
+  #skip:hover{
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.295);
+  }
+  #skip:focus {
+    outline: none;
+    opacity: 0%;
+    transition: opacity 0.5s;
+  }
+
+#hottub, #pool{
+  opacity: 0.5;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  flex-direction: column;
+  height: 40%;
+  top: 37vh;
+  width: 45%;
+}
+
+#hottub>img,#pool>img{
+  width: 14vw;
+  height: 14vw;
+}
+
+
+#pool>p, #hottub>p{
+  color: white;
+  font-size: 3vh;
+  text-align: center;
+  transition: color 0.5s ease;
+}
+
+/* Kitchen +Bathroom*/
+
+#kitchen_Container,#bathroomContainer{
+  height: 100vh;
+  left: 0%;
+  position: absolute;
+  flex-direction: row;
+  justify-content: space-evenly;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  color: white;
+}
+#kitchen_Container>p,#bathroomContainer>p{
+  position: absolute;
+  top: 6%;
+  font-size: 3vw;
+}
+
+.kitchenTitle, .bathroomTitle{
+  font-size: 6vh;
+  text-align: center;
+  color: white;
+}
+.kitchenText, .bathroomText{
+  padding-left: 15%;
+  padding-right: 15%;
+  font-size: 3vh;
+  text-align: center;
+  color: white;
+  opacity: 1;
+}
+.kitchen,.bathroom{
+ display: flex;
+ border: solid 1.7px;
+ border-radius: 55px;
+ width: 158px;
+ font-size: 19px;
+ background-color: transparent;
+ color: white;
+ cursor: pointer;
+ padding-bottom: 4px;
+ letter-spacing: 2px;
+ outline: none;
+ height: 50px;
+ flex-direction: column;
+ justify-content: center;
+ margin-bottom: 37vh;
+ transition: opacity 0.5 ease;
+}
+
+.kitchenImg{
+  background-image: url('https://nimvo.com/wp-content/uploads/2019/10/Modern-Kitchen.jpg');
+  position:absolute;
+  width: 100%;
+  height: 60%;
+  bottom: 0px;
+  background-position: center;
+  z-index: -1;
+  transition: all 1s;
+  background-size: cover;
+}
+.kitchenNext,.bathroomNext{
+  position: absolute;
+  bottom: 4%;
+}
+#kitchen1,#bathroom1{
+  opacity: 1;
+}
+#kitchen2, #kitchen3,#bathroom2, #bathroom3{
+  opacity: 0.5;
+}
+ 
+.bathroomImg{
+  background-image: url('https://media.inmobalia.com/imgV1/B98Le8~d7M9k3DegpEFZhS0lI_F8U4XZVz~HWxt~mGgYekxX9nCAxh0ZjtE2u9zqepXEUrVLqfm8KeIGW6Gtyd4X89rAIO5di0rCB16ZRsLZ39Rz92eYHvTHf4xVf97SwGxKMe3K40XFhGlV2hKlbKVcwbhWp2h5TA--.jpg');
+  position:absolute;
+  width: 100%;
+  height: 60%;
+  bottom: 0px;
+  background-position: center;
+  z-index: -1;
+  transition: all 1s;
+  background-size: cover;
+}
+
+/* Result */
+
+#resultImg{
+  opacity: 0;
+  position: absolute;
+  left: 3%;
+  top: 5%;
+  width: 50%;
+  height: 60%;
+  background: round;
+  transition: all 1s;
+}
+
+#resultText{
+  opacity: 0;
+  font-size: 19px;
+    text-align: center;
+    width: 100vw;
+    line-height: 27px;
+    position: absolute;
+    bottom: 18%;
+}
+
+.resultSlogan{
+  opacity: 0;
+  margin: 0;
+  height: fit-content;
+  top: -9%;
+  font-size: 5vw;
+  color: #45b0b3;
+  position: absolute;
+  bottom: 47.07%;
+  z-index: 1;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: -3px;
+  line-height: 108.2%;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+
+  input[type=range] {
+    width: 100%;
+    margin: 8px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+  }
+  input[type=range]:focus {
+    outline: none;
+    background: transparent;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0);
+    border: 0.6px solid #ffffff;
+    border-radius: 25px;
+    width: 100%;
+    height: 7px;
+    cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    margin-top: -8.6px;
+    width: 45px;
+    height: 23px;
+    background: #ffffff;
+    border: 0px solid rgba(255, 255, 255, 0);
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ffffff00;
+  }
+  input[type=range]::-moz-range-track {
+    background: rgba(255, 255, 255, 0);
+    border: 0.6px solid #ffffff;
+    border-radius: 25px;
+    width: 100%;
+    height: 7px;
+    cursor: pointer;
+  }
+  input[type=range]::-moz-range-thumb {
+    width: 80px;
+    height: 23px;
+    background: #ffffff;
+    border: 0px solid rgba(255, 255, 255, 0);
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 8px 0;
+    color: transparent;
+    width: 100%;
+    height: 7px;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-fill-lower {
+    background: #e8e8e8;
+    border: 0.6px solid #ffffff;
+    border-radius: 50px;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: rgba(255, 255, 255, 0);
+    border: 0.6px solid #ffffff;
+    border-radius: 50px;
+  }
+  input[type=range]::-ms-thumb {
+    width: 80px;
+    height: 23px;
+    background: #ffffff;
+    border: 0px solid rgba(255, 255, 255, 0);
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 0px;
+    /*Needed to keep the Edge thumb centred*/
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: rgba(255, 255, 255, 0);
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: #ffffff21;
+  }
+  /*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+  how to remove the virtical space around the range input in IE*/
+  @supports (-ms-ime-align:auto) {
+    /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+    input[type=range] {
+      margin: 0;
+      /*Edge starts the margin from the thumb, not the track as other browsers do*/
+    }
+  }
+
+
+/* //////////////// SMALL SCREEN //////////////////// */
+  
+#sidebar{
+display: none;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  
+  #welcome{
+    font-size: 9vw;
+  }
+ 
+  #sidebar{
+    position: fixed;
+    z-index: 5;
+    left: 51px;
+    top: 31px;
+    outline: none;
+    background: transparent;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 9px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  #steps{
+    padding-left: 31px;
+    direction: ltr;
+    position: absolute;
+    flex-direction: column;
+    z-index: 3;
+    height: 33vh;
+    width: 0;
+    left: 0;
+    top: 51px;
+    justify-content: center;
+    align-items: baseline;
+    margin: 0;
+  }
+
+  .stepList{
+    opacity: 0;
+    width: 0;
+    color: white;
+  }
+  .stepNames{
+    
+    text-align: left;
+    color: white;
+    margin-top: 0px;
+    margin-bottom: 28px;
+    width: 176px;
+    font-size: 15px;
+    font-weight: 500;
+
+  }
+  .stepNames>p{
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    left: 7px;
+    margin-block-start: 5px;  
+  }
+
+  #planImg{
+    display: none;
+  }
+
+  .containers{
+    width: 100vw;
+  }
+  .firstImg {
+    width: 100vw;
+  }
+  #utilityText{
+    line-height: 1.3;
+    font-size: 10vw;
+  }
+
+  #hottub>img, #pool>img {
+    width: 25vw;
+    height: 28vw;  
+  }
+  #hottub, #pool{
+    top: 36vh;
+  }
+  #hottubTxt,#poolTxt{
+    margin: 0;
+  }
+  #skip{
+    width: 40%;
+    height: 10%;
+    font-size: 6vw;
+  }
+  #kitchen_Container>p, #bathroomContainer>p {
+    font-size: 7vw;
+  }
+  .resultSlogan{
+    top: -4%;
+    font-size: 7vw;
+  }
+  #slider {
+    width: 65vw;
+  }
+  
+  #bedroomIcons>img {
+    height: 45%;
+  }
+
+  .kitchen, .bathroom{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  #resultImg{
+    width: 94%;
+    height: 45%;
+  }
+  #resultText{
+    width: unset;
+    font-size: 4vw;
+    text-align: center;
+    line-height: 31px;
+    position: absolute;
+    bottom: 23%;
+  }
+
+}
