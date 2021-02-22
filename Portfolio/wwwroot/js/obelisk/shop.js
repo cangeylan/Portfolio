@@ -3,6 +3,10 @@ for (const button of document.getElementsByClassName("addToBasketSign")) {
     button.onclick = addToBasket;
 }
 
+for (const radioButton of document.querySelectorAll(".colorRadio")) {
+    radioButton.onclick = ChangePicture;
+}
+
 function addToBasket() {
     let GekozenColor;
     let colorRadioButtons = document.getElementsByName(`Color ${this.dataset.product_id}`);
@@ -75,4 +79,9 @@ function SuccesfulPushSign(pId) {
         document.querySelector(`.cartIcon`).style.color = '';
         document.querySelector(`[data-product_id="${pId}"]`).style.color = '';
     }, 200);
+}
+
+function ChangePicture() {
+    let productId = this.dataset.productid;
+    document.getElementById(productId).src = `https://cangeylan.azurewebsites.net/img/obelisk/products/${this.dataset.image}`;
 }

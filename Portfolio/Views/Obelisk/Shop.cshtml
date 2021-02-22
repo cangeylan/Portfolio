@@ -18,7 +18,7 @@
 
                         <div class="card-body text-center pb-0">
                             <p class="card-title mb-0"><strong> @item.Name</strong></p>
-                            <p class="card-text mb-0">@item.ListPrice</p>
+                            <p class="card-text mb-0">@String.Format("€ {0:n}",item.ListPrice)</p>
                             <div class="input-group m-2">
                                 <select id="Size_@item.ProductId.ToString()" class="browser-default custom-select"  aria-label="Example select with button addon">
                                     <option value=0 selected>Kies maat</option>
@@ -36,11 +36,12 @@
                                     foreach (var productColor in item.ProductColors)
                                     {
                                         <div class="form-check form-check-inline" style='font-size: 14px;'>
-                                            <input class="form-check-input" type="radio" 
+                                            <input class="form-check-input colorRadio" type="radio" 
                                                    @state 
                                                    name="Color @productColor.ProductID" 
                                                    data-name="@productColor.Color.Name" 
                                                    data-image="@productColor.Image"
+                                                   data-productid="@productColor.ProductID"
                                                    data-id="@productColor.Color.ColorID.ToString()">
                                             <label class="form-check-label" for="inlineRadio1">@productColor.Color.Name</label>
                                         </div>
