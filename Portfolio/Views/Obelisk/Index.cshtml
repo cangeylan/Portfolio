@@ -9,7 +9,7 @@
     <div class="welcomebanner col-md-5 p-lg-5 mx-auto my-5 ">
         <img class="mb-3" src="https://www.obelisk.be/sites/all/themes/obelisk/logo.png" height="60">
         <p class="lead font-weight-normal" style="color: #e9ecef;">Ontdek de mooiste kleding.</p>
-        <a class="btn btn-outline-secondary" href="winkel.html?type=">Shop nu</a>
+        <a class="btn btn-outline-secondary" asp-controller="Obelisk" asp-action="Shop">Shop nu</a>
     </div>
     <video autoplay muted loop>
         <source src="~/video/campaign_video.mp4">
@@ -23,7 +23,7 @@
             <p class="lead" style="width: 300px; margin-top: 80px; font-size: 1.1em; margin-right: 40px;">
                 Volg het laatste nieuws uit onze winkel om op de hoogte te blijven van aanbiedingen, aanbiedingen, collecties en alles wat je zou willen weten over Obelisk Fashion ...
             </p>
-            <a href="latstenews.html" class="btn btn-dark mt-5" style="margin-right: 40px;">ga naar de nieuwspagina</a>
+            <a  class="btn btn-dark mt-5" style="margin-right: 40px;">ga naar de nieuwspagina</a>
         </div>
         <div class="col-md-6">
             <img src="https://social.massimodutti.com/paper/wp-content/uploads/2020/09/image_01.jpg" alt="">
@@ -43,7 +43,7 @@
                             <div class="carousel-caption text-left">
                                 <h1>@item.Name</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <p><a class="btn btn-lg btn-outline-secondary" href="#" role="button">Shop nu</a></p>
+                                <p><a class="btn btn-lg btn-outline-secondary"  asp-controller="Obelisk" asp-action="Shop" role="button">Shop nu</a></p>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                 <p class="lead" style="width: 300px; margin-top: 40px; font-size: 1.1em; margin-right: 40px;">
                     Wij vinden bedrijfskleding een mooie branche om in te werken. Iedereen is trots als er weer een bedrijf door ons van representatieve kleding is voorzien. We beseffen iedere dag dat we samen de klus moeten klaren. Van de mensen die de orders invoeren tot degenen die in het atelier werken, allemaal dragen we ons steentje bij aan een perfect eindresultaat. Ons team staat voor u klaar!
                 </p>
-                <a class="btn btn-dark mt-5" style="margin-right: 30px;" href="Theteam.html">Lees meer</a>
+                <a class="btn btn-dark mt-5" style="margin-right: 30px;" >Lees meer</a>
             </div>
 
         </div>

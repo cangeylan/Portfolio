@@ -18,19 +18,11 @@ namespace Portfolio.Controllers
         //    _logger = logger;
         //}
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-        public IActionResult Galgje()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
 
-        public IActionResult Penthouse()
-        {
-            return View();
-        }
+        public IActionResult Galgje() => View();
+
+        public IActionResult Penthouse() => View();
 
         public IActionResult Privacy()
         {

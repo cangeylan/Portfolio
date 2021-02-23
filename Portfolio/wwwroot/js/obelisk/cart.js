@@ -101,7 +101,6 @@ function ChangeAmount() {
     ShowBasket();
 }
 
-//Prevent dropdown from closing when clicked inside the dropdown
 $('.dropdown-menu.winkelwagantje, #aanmelden_dropdown').on('click', function (event) {
     var events = $._data(document, 'events') || {};
     events = events.click || [];

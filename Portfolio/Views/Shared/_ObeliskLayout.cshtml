@@ -22,11 +22,13 @@
                         <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
                     </svg>
                 </a>
-                <a class="py-2 d-none d-md-inline-block" asp-controller="Obelisk" asp-action="Shop">Shop</a>
                 <a class="py-2 d-none d-md-inline-block">Nieuws</a>
                 <a class="py-2 d-none d-md-inline-block">Ons team</a>
                 <a class="py-2 d-none d-md-inline-block">Contact</a>
-
+                <a class="nav-link dropdown-toggle py-2 d-none d-md-inline-block" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-controller="Obelisk" asp-action="Shop">Shop</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @await Component.InvokeAsync("CategoryDropdown",new { maxPriority = 2,isDone = false })
+                </div>
                 <!-- Zoekbalk -->
                 <div class="col-6 pr-0">
                     <a aria-label="Search">
