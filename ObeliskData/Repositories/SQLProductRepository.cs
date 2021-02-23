@@ -32,7 +32,7 @@ namespace ObeliskData.Repositories
             .Take(take);
             
         public IEnumerable<ProductCategory> GetParentCategories() => 
-            context.ProductCategories.Where(x => x.ParentProductCategoryId != null);
+            context.ProductCategories.Where(x => x.ParentProductCategoryId == null);
 
         public  Task<List<ProductCategory>> GetParentCategoriesAsync() =>  context.ProductCategories.Where(pc => pc.ParentProductCategoryId == null).ToListAsync();
     }
