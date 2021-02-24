@@ -30,10 +30,16 @@ namespace ObeliskData.Repositories
             .ThenInclude(pc => pc.Color)
             .Skip(skip)
             .Take(take);
-            
+
+        
         public IEnumerable<ProductCategory> GetParentCategories() => 
             context.ProductCategories.Where(x => x.ParentProductCategoryId == null);
 
         public  Task<List<ProductCategory>> GetParentCategoriesAsync() =>  context.ProductCategories.Where(pc => pc.ParentProductCategoryId == null).ToListAsync();
+
+        public Task<int> GetProductAmountAsync()
+        {
+            return context.Products.CountAsync();
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace ObeliskData.Repositories
         IEnumerable<ProductCategory> GetParentCategories();
         IEnumerable<Product> GetAllProductsOfACategory(int catId,int skip,int take);
         Task<List<ProductCategory>>  GetParentCategoriesAsync();
+        Task<int> GetProductAmountAsync();
     }
 }
