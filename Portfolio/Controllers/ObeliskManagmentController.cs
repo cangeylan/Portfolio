@@ -17,7 +17,7 @@ namespace Portfolio.Controllers
         {
             ProductManagmentViewModel productManagmentVM = new ProductManagmentViewModel()
             {
-                CurrentPage=skip,
+                CurrentPage= skip==0?0:skip/5,
                 Products= repository.GetAllProducts(skip,take)
             };
 
