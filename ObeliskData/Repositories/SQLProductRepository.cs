@@ -35,7 +35,8 @@ namespace ObeliskData.Repositories
         public IEnumerable<ProductCategory> GetParentCategories() => 
             context.ProductCategories.Where(x => x.ParentProductCategoryId == null);
 
-        public  Task<List<ProductCategory>> GetParentCategoriesAsync() =>  context.ProductCategories.Where(pc => pc.ParentProductCategoryId == null).ToListAsync();
+        public  Task<List<ProductCategory>> GetParentCategoriesAsync() =>  
+            context.ProductCategories.Where(pc => pc.ParentProductCategoryId == null).ToListAsync();
 
         public Task<int> GetProductAmountAsync()
         {

@@ -1,7 +1,13 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using ObeliskData.Models;
-using Microsoft.EntityFrameworkCore.Metadata;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 #nullable disable
 
@@ -9,6 +15,8 @@ namespace ObeliskData.Repositories
 {
     public partial class ObeliskDbContext : DbContext
     {
+        public static IConfigurationRoot configuration;
+
         public ObeliskDbContext()
         {
         }
@@ -39,10 +47,12 @@ namespace ObeliskData.Repositories
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=tcp:obeliskdb.database.windows.net,1433;Initial Catalog=ObeliskDb;Persist Security Info=False;User ID=obelisk_admin;Password=can_portfolio2021;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                configuration = new ConfigurationBuilder().SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName).AddJsonFile("appsettings.json",false).Build();
+                var connectionString = configuration.GetConnectionString("portfolio_connection");
+                optionsBuilder.UseSqlServer(connectionString);
             }
         }
 
