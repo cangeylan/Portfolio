@@ -60,8 +60,6 @@ namespace ObeliskData.Repositories
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            
-
             modelBuilder.Entity<Color>().ToTable("Color","SalesLT");
             modelBuilder.Entity<Color>().Property(s => s.Name).IsRequired().HasColumnName("ColorName");
             modelBuilder.Entity<Color>().Property(s => s.ColorID).IsRequired();

@@ -88,7 +88,6 @@ function ChangeAmount() {
         if (e.ProductId == dataId && e.Color.Id == colorId && e.Size.Id == sizeId) {
             if (operator == "-") {
                 e.Amount--;
-                console.log(e);
                 if (e.Amount == 0)
                     basket = basket.filter(obj=>obj.Amount!=0);
             }
