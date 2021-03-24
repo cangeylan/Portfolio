@@ -12,10 +12,10 @@
 </head>
 
 <html>
-<body class="product_beheren" >
+<body class="product_beheren">
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link homeIcon"  asp-controller="Home" asp-action="Index">
+            <a class="nav-link homeIcon" asp-controller="Home" asp-action="Index">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img" viewBox="0 0 24 24"><title>Portfolio</title><circle cx="12" cy="12" r="10" /><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" /></svg>
             </a>
         </li>
@@ -23,10 +23,10 @@
             <a class="nav-link active" asp-controller="ObeliskManagment" asp-action="Index">Producten Overzicht</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" >Klant Overzicht</a>
+            <a class="nav-link">Klant Overzicht</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" >Bestelling Overzicht</a>
+            <a class="nav-link">Bestelling Overzicht</a>
         </li>
         <li class="nav-item">
             <a class="nav-link ">Contact Formulier Overzicht</a>
@@ -53,8 +53,10 @@
         <input type="checkbox" class="custom-control-input" checked="checked" id="darkmode" onclick="toggleDarkMode()">
         <label class="custom-control-label" for="darkmode" id="dark_mode_txt">Dark Mode</label>
     </div>-->
-    <script src="~/js/obelisk/productManagment/products.js"></script>
     @RenderBody()
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/obelisk/productManagment/products.js"></script>
 
 </body>
 

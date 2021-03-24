@@ -1,12 +1,19 @@
-﻿function toggleDarkMode() {
+﻿$("#JumpToPage").click(function () {
 
-    if (document.getElementById('darkmode').checked == true) {
-        document.getElementById('stylesheet').setAttribute('href', '/css/darkmode.css')
-        document.getElementById('product_tabel').className = "table table-striped table-bordered table-dark"
-        document.getElementById('dark_mode_txt').innerHTML = 'Light Mode'
-    } else {
-        document.getElementById('stylesheet').setAttribute('href', ' ')
-        document.getElementById('product_tabel').className = "table table-striped table-bordered"
-        document.getElementById('dark_mode_txt').innerHTML = 'Dark Mode'
+    JumpToPage()
+});
+
+document.getElementById("goToPageNumber").onkeypress = function (e) {
+    if (!e) e = window.event;
+    var keyCode = e.code || e.key;
+    if (keyCode == 'Enter') {
+        JumpToPage()
+        return false;
     }
+}
+
+function JumpToPage() {
+    let page = document.getElementById("goToPageNumber").value;
+    page = page != 0 ? page : 1;
+    window.location.href = `ObeliskManagment?Skip=${(page - 1) * 5}`;
 }
